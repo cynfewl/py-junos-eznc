@@ -22,7 +22,9 @@ RUN apk add --no-cache build-base python3-dev py-lxml \
     && ln -s /usr/bin/python3 /usr/bin/python \
     && pip install . \
     && rm -rf /source/* \
-    && chmod +x /usr/local/bin/entrypoint.sh
+    && chmod +x /usr/local/bin/entrypoint.sh \
+    && apk add -no-cache openssh-client \
+    && echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config && \
 
 WORKDIR /scripts
 
